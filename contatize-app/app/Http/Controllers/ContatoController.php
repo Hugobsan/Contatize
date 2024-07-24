@@ -13,7 +13,7 @@ class ContatoController extends Controller
      */
     public function index()
     {
-        //
+        dd("Deu certo");
     }
 
     /**
