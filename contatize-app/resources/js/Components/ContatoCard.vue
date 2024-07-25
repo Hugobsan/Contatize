@@ -44,7 +44,7 @@ const deleteContato = () => {
             <div class="font-bold">{{ contato.nome }}</div>
             <div class="text-gray-500">{{ contato.telefone }}</div>
         </div>
-        <v-menu open-on-hover>
+        <v-menu open-on-click>
             <template v-slot:activator="{ props }">
                 <v-btn icon v-bind="props">
                     <v-icon>mdi-dots-horizontal</v-icon>
