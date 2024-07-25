@@ -11,7 +11,7 @@ class StoreContatoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StoreContatoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nome' => ['required', 'string', 'max:255'],
+            'telefone' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:contatos'],
+            'imagem' => ['nullable', 'image'],
         ];
     }
 }
