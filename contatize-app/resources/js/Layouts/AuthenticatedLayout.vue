@@ -21,9 +21,14 @@ const showingNavigationDropdown = ref(false);
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('contatos.index')">
-                                    <ApplicationLogo
-                                        class="block h-9 w-auto fill-current text-gray-800"
-                                    />
+                                    <h1 class="font-bold text-xl text-blue-600">
+                                        Contatize
+                                    </h1>
+                                    <span
+                                        class="hidden md:inline text-sm text-gray-500"
+                                    >
+                                        Gestão de contatos
+                                    </span>
                                 </Link>
                             </div>
 
@@ -77,15 +82,17 @@ const showingNavigationDropdown = ref(false);
                                                 )
                                             "
                                         >
-                                            Perfil</DropdownLink
-                                        >
-                                        <DropdownLink
+                                            Perfil
+                                        </DropdownLink>
+                                        <hr />
+                                        <Link
                                             :href="route('logout')"
                                             method="post"
                                             as="button"
+                                            class="w-full text-left py-1 px-4"
                                         >
                                             Sair
-                                        </DropdownLink>
+                                        </Link>
                                     </template>
                                 </Dropdown>
                             </div>
@@ -145,9 +152,9 @@ const showingNavigationDropdown = ref(false);
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink
                             :href="route('contatos.index')"
-                            :active="route().current('dashboard')"
+                            :active="route().current('contatos')"
                         >
-                            Dashboard
+                            Contatos
                         </ResponsiveNavLink>
                     </div>
 
@@ -171,15 +178,17 @@ const showingNavigationDropdown = ref(false);
                                     )
                                 "
                             >
-                                Profile
+                                Perfil
                             </ResponsiveNavLink>
-                            <ResponsiveNavLink
+                            <hr />
+                            <Link
                                 :href="route('logout')"
                                 method="post"
                                 as="button"
+                                class="w-full text-left py-1 px-4"
                             >
-                                Log Out
-                            </ResponsiveNavLink>
+                                Sair
+                            </Link>
                         </div>
                     </div>
                 </div>
