@@ -27,7 +27,7 @@ const props = defineProps({
 
             </div>
         </template>
-        <div class="mt-1">
+        <div class="mt-1 d-flex flex-column justify-content-center align-content-center">
             <ContatosList :contatos="contatos" />
         </div>
         
