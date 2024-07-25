@@ -99,11 +99,11 @@ class ContatoController extends Controller
         //Deletando a imagem do storage
         try {
             Storage::delete($contato->imagem);
-            $contato->delete();
+            
         } catch (\Exception $e) {
             return back()->with('error', 'Erro ao deletar o contato');
         }
-
-        return redirect()->route('contatos.index');
+        $contato->delete();
+        return redirect()->route('contatos.index')->with('success', 'Contato deletado com sucesso');
     }
 }

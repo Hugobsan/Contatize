@@ -83,7 +83,7 @@ const formatErrors = (errorResponse) => {
                             <v-text-field
                                 v-model="form.telefone"
                                 label="Telefone"
-                                v-mask="'(##) # ####-####'"
+                                v-mask="'(##) #####-####'"
                                 required
                                 :error-messages="errors.telefone || []"
                             ></v-text-field>

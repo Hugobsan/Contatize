@@ -22,6 +22,19 @@ class Contato extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function setTelefoneAttribute($value)
+    {
+        $this->attributes['telefone'] = preg_replace('/[^0-9]/', '', $value);
+    }
+
+    public function getTelefoneAttribute($value)
+    {
+        if(strlen($value) == 10)
+            return "(".substr($value, 0, 2).") ".substr($value, 2, 4)."-".substr($value, 6);
+        else
+            return "(".substr($value, 0, 2).") ".substr($value, 2, 5)."-".substr($value, 7);
+    }
+
     public function getImagemAttribute($value)
     {
         // Caso não exista um valor, retorna nulo:
