@@ -24,15 +24,17 @@ class Contato extends Model
 
     public function getImagemAttribute($value)
     {
-        //Caso não exista um valor, retorna nulo:
+        // Caso não exista um valor, retorna nulo:
         if (!$value) {
             return null;
         }
-        //Caso seja um link externo, retorna o link:
+
+        // Caso seja um link externo, retorna o link:
         if (filter_var($value, FILTER_VALIDATE_URL)) {
             return $value;
         }
-        //Caso seja um link local, retorna o link completo:
+
+        // Retorna o link completo acessível publicamente
         return asset('storage/' . $value);
     }
 }

@@ -8,14 +8,14 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import '@mdi/font/css/materialdesignicons.css';
 import Toast, { POSITION } from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
-
+import VueTheMask from 'vue-the-mask';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
-import 'vuetify/styles'
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
+import 'vuetify/styles';
+import { createVuetify } from 'vuetify';
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
 
 const vuetify = createVuetify({
     icons: {
@@ -47,20 +47,25 @@ const vuetify = createVuetify({
     ssr: true,
     components,
     directives,
-})
+});
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
     setup({ el, App, props, plugin }) {
-        return createApp({ render: () => h(App, props) })
+        const app = createApp({ render: () => h(App, props) });
+
+        app
             .use(plugin)
             .use(ZiggyVue)
             .use(vuetify)
             .use(Toast, {
-                position: POSITION.TOP_RIGHT
+                position: POSITION.TOP_RIGHT,
             })
+            .use(VueTheMask)  // Use VueTheMask plugin
             .mount(el);
+
+        return app;
     },
     progress: {
         color: '#4B5563',

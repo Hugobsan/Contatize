@@ -1,8 +1,8 @@
 <script setup>
-import { router } from "@inertiajs/vue3";
-import { ref, computed } from "vue";
-import "@mdi/font/css/materialdesignicons.css";
-import { useForm } from "@inertiajs/vue3";
+import { ref } from 'vue';
+import { useForm } from '@inertiajs/vue3';
+import { router } from '@inertiajs/vue3';
+import '@mdi/font/css/materialdesignicons.css';
 
 const props = defineProps({
     contato: {
@@ -11,27 +11,24 @@ const props = defineProps({
     },
 });
 
-const showContato = (contato) => {
-    router.visit(route("contatos.show", { id: contato.id }));
+const deleteForm = useForm({
+    _method: 'delete',
+});
+
+const showContato = () => {
+    router.visit(route('contatos.show', { id: props.contato.id }));
 };
 
-const deleteContato = (contato) => {
-    if (confirm("Tem certeza que deseja excluir este contato?")) {
-        deleteForm.post(route("contatos.destroy", { id: contato.id }), {
+const deleteContato = () => {
+    if (confirm('Tem certeza que deseja excluir este contato?')) {
+        deleteForm.post(route('contatos.destroy', { id: props.contato.id }), {
             onFinish: () => {
-                router.visit(route("contatos.index"));
+                router.visit(route('contatos.index'));
             },
         });
     }
 };
 </script>
-
-<style scoped>
-.v-avatar {
-    width: 50px;
-    height: 50px;
-}
-</style>
 
 <template>
     <div class="flex items-center p-4 bg-white shadow rounded-lg">
@@ -47,20 +44,27 @@ const deleteContato = (contato) => {
             <div class="font-bold">{{ contato.nome }}</div>
             <div class="text-gray-500">{{ contato.telefone }}</div>
         </div>
-        <v-menu offset-y>
-            <template v-slot:activator="{ on, attrs }">
-                <v-btn icon v-bind="attrs" v-on="on">
+        <v-menu open-on-hover>
+            <template v-slot:activator="{ props }">
+                <v-btn icon v-bind="props">
                     <v-icon>mdi-dots-horizontal</v-icon>
                 </v-btn>
             </template>
             <v-list>
-                <v-list-item @click="verContato">
+                <v-list-item @click="showContato">
                     <v-list-item-title>Ver Contato</v-list-item-title>
                 </v-list-item>
-                <v-list-item @click="excluirContato">
+                <v-list-item @click="deleteContato">
                     <v-list-item-title>Excluir Contato</v-list-item-title>
                 </v-list-item>
             </v-list>
         </v-menu>
     </div>
 </template>
+
+<style scoped>
+.v-avatar {
+    width: 50px;
+    height: 50px;
+}
+</style>

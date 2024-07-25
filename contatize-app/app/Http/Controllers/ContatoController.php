@@ -36,9 +36,9 @@ class ContatoController extends Controller
     public function store(StoreContatoRequest $request)
     {
         //Armazenando a imagem no storage
-        $imagem = $request->file('imagem')->store('contatos');
+        $imagem = $request->file('imagem')->store('contatos', 'public');
 
-        //Criando um novo contato
+        // Criando um novo contato
         Contato::create([
             'nome' => $request->nome,
             'telefone' => $request->telefone,
@@ -97,13 +97,13 @@ class ContatoController extends Controller
     public function destroy(Contato $contato)
     {
         //Deletando a imagem do storage
-        try{
+        try {
             Storage::delete($contato->imagem);
             $contato->delete();
         } catch (\Exception $e) {
             return back()->with('error', 'Erro ao deletar o contato');
         }
-        
+
         return redirect()->route('contatos.index');
     }
 }

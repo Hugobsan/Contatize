@@ -1,11 +1,12 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
-import ContatosList from './ContatosList.vue';
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import { Head } from "@inertiajs/vue3";
+import ContatosList from "./ContatosList.vue";
+import ContatosCreate from "./ContatosCreate.vue";
 // import HotelsList from '@/Pages/Hotels/HotelsList.vue';
 // import HotelsCreate from '@/Pages/Hotels/HotelsCreate.vue';
 
-import axios from 'axios';
+import axios from "axios";
 
 const props = defineProps({
     contatos: {
@@ -19,17 +20,19 @@ const props = defineProps({
 
     <AuthenticatedLayout>
         <template #header>
-            <div class="d-flex flex-row justify-between">
+            <div class="flex justify-between">
                 <div>
-                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">Contatos</h2>
+                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                        Contatos
+                    </h2>
                 </div>
-                <!-- <HotelsCreate /> -->
-
+                <ContatosCreate />
             </div>
         </template>
-        <div class="mt-1 d-flex flex-column justify-content-center align-content-center">
-            <ContatosList :contatos="contatos" />
+        <div class="mt-1 flex justify-center">
+            <div class="lg:w-2/3 w-full">
+                <ContatosList :contatos="contatos" />
+            </div>
         </div>
-        
     </AuthenticatedLayout>
 </template>
