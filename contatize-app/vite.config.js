@@ -18,12 +18,12 @@ export default defineConfig({
         }),
     ],
     server: {
-        host: 'http://129.148.62.231',
+        host: '0.0.0.0',
         port: 5173,
         proxy: {
             '/resources': {
                 target: 'http://129.148.62.231',
-                changeOrigin: false,
+                changeOrigin: true,
                 secure: false,
                 rewrite: (path) => path.replace(/^\/resources/, ''),
             },
