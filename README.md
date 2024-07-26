@@ -6,7 +6,6 @@ O Contatize é uma aplicação desenvolvida para armazenar contatos de uma agend
 
 A aplicação pode ser acessada através do link abaixo:
 
-
 ## Funcionalidades
 
 - Cadastro de contatos
@@ -30,6 +29,8 @@ A aplicação pode ser acessada através do link abaixo:
 
 ## Instalação
 
+Para executar a aplicação localmente, é necessário ter o Docker e o Docker Compose instalados em sua máquina. Além do PHP 8.3 e o Composer para instalar as dependências do Laravel.
+
 Para executar a aplicação localmente, siga os passos abaixo:
 
 1. Clone o repositório:
@@ -44,16 +45,16 @@ git clone https://github.com/Hugobsan/Contatize.git
 cd contatize-app
 ```
 
-3. Execute o Laravel Sail:
+3. Instale as dependências do Composer:
+
+```bash
+composer install
+```
+
+4. Execute o Laravel Sail:
 
 ```bash
 ./vendor/bin/sail up -d
-```
-
-4. Instale as dependências do Composer:
-
-```bash
-./vendor/bin/sail composer install
 ```
 
 5. Instale as dependências do NPM:
