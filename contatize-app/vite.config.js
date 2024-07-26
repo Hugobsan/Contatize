@@ -18,18 +18,15 @@ export default defineConfig({
         }),
     ],
     server: {
-        host: '0.0.0.0',
+        host: '0.0.0.0', // permite conexões externas
         port: 5173,
         proxy: {
             '/resources': {
-                target: 'http://localhost:5173', // Redireciona para o servidor Vite
+                target: 'http://129.148.62.231:5173', // ajuste para o IP público
                 changeOrigin: true,
                 secure: false,
                 rewrite: (path) => path.replace(/^\/resources/, ''),
             },
-        },
-        hmr: {
-            host: 'localhost', // HMR deve apontar para localhost
         },
     },
 });
