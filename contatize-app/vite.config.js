@@ -17,4 +17,16 @@ export default defineConfig({
             },
         }),
     ],
+    server: {
+        host: '0.0.0.0', // Permite conexões externas
+        port: 5173,
+        proxy: {
+            '/api': {
+                target: 'http://127.0.0.1', // Endereço do backend
+                changeOrigin: true,
+                secure: false,
+                logLevel: 'debug',
+            },
+        },
+    },
 });
