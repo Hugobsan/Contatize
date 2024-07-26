@@ -15,7 +15,7 @@ class ContatoController extends Controller
      */
     public function index()
     {
-        $contatos = Contato::orderBy('nome')->get();
+        $contatos = Contato::where('user_id', auth()->id())->orderBy('nome')->get();
 
         return Inertia::render('Contatos/Index', [
             'contatos' => $contatos,
@@ -55,6 +55,7 @@ class ContatoController extends Controller
      */
     public function show(Contato $contato)
     {
+        $contato->formatted_updated_at = $contato->updated_at->format('d/m/Y H:i');
         return Inertia::render('Contatos/Show', [
             'contato' => $contato,
         ]);
@@ -99,7 +100,6 @@ class ContatoController extends Controller
         //Deletando a imagem do storage
         try {
             Storage::delete($contato->imagem);
-            
         } catch (\Exception $e) {
             return back()->with('error', 'Erro ao deletar o contato');
         }

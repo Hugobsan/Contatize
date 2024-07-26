@@ -9,6 +9,7 @@ import '@mdi/font/css/materialdesignicons.css';
 import Toast, { POSITION } from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
 import VueTheMask from 'vue-the-mask';
+import 'tailwindcss/tailwind.css';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
