@@ -36,17 +36,19 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        return Inertia::render('Profile/Edit', [
+            'user' => $user
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, User $user)
+    public function update(Request $request, User $user)
     {
         $user->update($request->all());
         toastr()->success('Usuário atualizado com sucesso');
-        return redirect()->route('users.index');
+        return redirect()->route('users.show', $user);
     }
 
     /**

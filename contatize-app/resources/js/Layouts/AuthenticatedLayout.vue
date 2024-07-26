@@ -77,8 +77,7 @@ const showingNavigationDropdown = ref(false);
                                         <DropdownLink
                                             :href="
                                                 route(
-                                                    'users.show',
-                                                    $page.props.auth.user.id
+                                                    'profile.edit'
                                                 )
                                             "
                                         >
@@ -173,8 +172,7 @@ const showingNavigationDropdown = ref(false);
                             <ResponsiveNavLink
                                 :href="
                                     route(
-                                        'users.show',
-                                        $page.props.auth.user.id
+                                        'profile.edit'
                                     )
                                 "
                             >
