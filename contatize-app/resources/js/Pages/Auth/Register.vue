@@ -26,9 +26,9 @@ const submit = () => {
     <Head title="Registrar-se" />
 
     <AuthenticationCard>
-        <template #logo>
-            <AuthenticationCardLogo />
-        </template>
+        <div class="font-medium text-2xl text-center my-3">
+            Contatize - Agenda de Contatos
+        </div>
 
         <form @submit.prevent="submit">
             <div>
