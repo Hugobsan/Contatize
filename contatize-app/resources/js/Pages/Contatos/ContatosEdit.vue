@@ -1,24 +1,32 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
-import { ref, watch } from "vue";
+import { ref, watch, onMounted } from "vue";
 import { useToast } from "vue-toastification";
 
 const dialog = ref(false);
 const toast = useToast();
 
+// Define os campos do formulário
+const props = defineProps({
+    contato: {
+        type: Object,
+        required: true,
+    },
+});
+
 // Formulário para adicionar um novo contato
 const form = useForm({
-    nome: "",
-    telefone: "",
-    email: "",
+    nome: props.contato.nome,
+    telefone: props.contato.telefone,
+    email: props.contato.email,
     imagem: null,
 });
 
 // Armazena os erros do formulário
 const errors = ref({});
 
-const createContato = () => {
-    form.post(route("contatos.store"), {
+const saveContato = () => {
+    form.put(route("contatos.update", {id: props.contato.id}), {
         onSuccess: () => {
             dialog.value = false;
             form.reset();
@@ -51,10 +59,18 @@ const previewImage = (event) => {
             imagePreview.value = e.target.result;
         };
         reader.readAsDataURL(file);
+        form.imagem = file; // Adiciona o arquivo ao campo imagem do formulário
     }
 };
 
 const imagePreview = ref("");
+
+// Pré-carregar a imagem na montagem do componente
+onMounted(() => {
+    if (props.contato.imagem) {
+        imagePreview.value = props.contato.imagem;
+    }
+});
 
 const formatErrors = (errorResponse) => {
     const formattedErrors = {};
@@ -70,9 +86,9 @@ const formatErrors = (errorResponse) => {
         <v-btn color="primary" @click="dialog = true"><v-icon >mdi-pencil</v-icon></v-btn>
         <v-dialog v-model="dialog" max-width="720px">
             <v-card>
-                <v-card-title>Adicionar Contato</v-card-title>
+                <v-card-title>Editar Contato</v-card-title>
                 <v-card-text>
-                    <v-form @submit.prevent="createContato">
+                    <v-form @submit.prevent="saveContato">
                         <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
                             <v-text-field
                                 v-model="form.nome"
@@ -113,7 +129,7 @@ const formatErrors = (errorResponse) => {
                             </div>
                         </div>
                         <v-btn type="submit" color="primary" class="mt-4"
-                            >Adicionar</v-btn
+                            >Salvar</v-btn
                         >
                     </v-form>
                 </v-card-text>

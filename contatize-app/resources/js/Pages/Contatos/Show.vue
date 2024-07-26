@@ -43,11 +43,11 @@ const deleteContato = () => {
                                     <img
                                         :src="contato.imagem"
                                         alt="Imagem do contato"
-                                        class="max-w-full h-full rounded-full"
+                                        class="w-full h-full rounded-full"
                                     />
                                 </template>
                                 <template v-else>
-                                    <v-icon size="30">mdi-account-circle</v-icon>
+                                    <v-icon size="112" class="text-gray-800">mdi-account-circle</v-icon>
                                 </template>
                             </div>
                         </div>

@@ -36,7 +36,11 @@ class ContatoController extends Controller
     public function store(StoreContatoRequest $request)
     {
         //Armazenando a imagem no storage
-        $imagem = $request->file('imagem')->store('contatos', 'public');
+        if ($request->hasFile('imagem')) {
+            $imagem = $request->file('imagem')->store('contatos');
+        } else {
+            $imagem = null;
+        }
 
         // Criando um novo contato
         Contato::create([
