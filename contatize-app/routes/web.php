@@ -30,4 +30,5 @@ Route::group(function () {
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::put('password', [PasswordController::class, 'update'])->name('password.alterar');
     });
-})->middleware(CorsMiddleware::class);
+});
+// ->middleware(CorsMiddleware::class);
