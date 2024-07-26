@@ -20,6 +20,7 @@ const showContato = () => {
 };
 
 const deleteContato = () => {
+    console.log(props.contato);
     if (confirm('Tem certeza que deseja excluir este contato?')) {
         deleteForm.post(route('contatos.destroy', { id: props.contato.id }), {
             onFinish: () => {

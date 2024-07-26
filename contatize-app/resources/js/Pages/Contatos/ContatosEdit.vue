@@ -20,13 +20,14 @@ const form = useForm({
     telefone: props.contato.telefone,
     email: props.contato.email,
     imagem: null,
+    _method: "put",
 });
 
 // Armazena os erros do formulário
 const errors = ref({});
 
 const saveContato = () => {
-    form.put(route("contatos.update", {id: props.contato.id}), {
+    form.post(route("contatos.update", {id: props.contato.id}), {
         onSuccess: () => {
             dialog.value = false;
             form.reset();

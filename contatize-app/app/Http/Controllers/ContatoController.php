@@ -37,7 +37,7 @@ class ContatoController extends Controller
     {
         //Armazenando a imagem no storage
         if ($request->hasFile('imagem')) {
-            $imagem = $request->file('imagem')->store('contatos');
+            $imagem = $request->file('imagem')->store('contatos', 'public');
         } else {
             $imagem = null;
         }
@@ -80,7 +80,7 @@ class ContatoController extends Controller
     {
         //Atualizando a imagem no storage
         if ($request->hasFile('imagem')) {
-            $imagem = $request->file('imagem')->store('contatos');
+            $imagem = $request->file('imagem')->store('contatos', 'public');
         } else {
             $imagem = $contato->imagem;
         }
