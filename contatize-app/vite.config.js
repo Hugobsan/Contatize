@@ -22,11 +22,14 @@ export default defineConfig({
         port: 5173,
         proxy: {
             '/resources': {
-                target: 'http://129.148.62.231',
+                target: 'http://localhost:5173', // Redireciona para o servidor Vite
                 changeOrigin: true,
                 secure: false,
                 rewrite: (path) => path.replace(/^\/resources/, ''),
             },
+        },
+        hmr: {
+            host: 'localhost', // HMR deve apontar para localhost
         },
     },
 });
