@@ -18,18 +18,10 @@ export default defineConfig({
         }),
     ],
     server: {
-        host: '0.0.0.0', // Permite conexões externas
+        host: '0.0.0.0',
         port: 5173,
-        proxy: {
-            '/resources': {
-                target: 'http://129.148.62.231:5173', // Ajuste para o IP público
-                changeOrigin: true,
-                secure: false,
-                rewrite: (path) => path.replace(/^\/resources/, ''),
-            },
-        },
         hmr: {
-            host: '129.148.62.231', // Atualize para o IP público
+            host: '129.148.62.231',
         },
     },
 });
