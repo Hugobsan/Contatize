@@ -12,7 +12,7 @@ use App\Http\Middleware\CorsMiddleware;
 
 
 //Adicionando Group para o middleware de CorsMiddleware
-Route::group(function () {
+Route::group(['Middleware' => CorsMiddleware::class], function () {
     Route::get('/', function () {
         return redirect()->route('login');
     });
