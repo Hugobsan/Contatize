@@ -4,12 +4,12 @@ O Contatize é uma aplicação desenvolvida para armazenar contatos de uma agend
 
 ## Apresentação da Aplicação
 
-Você pode assistir ao vídeo de apresentação da aplicação clicando no link abaixo:
+Você pode assistir ao vídeo de apresentação da aplicação clicando no link:
 [Vídeo de Apresentação](https://youtu.be/nPCxp0pRZMI)
 
 ## Acesso à Aplicação
 
-Acesse a aplicação através do link abaixo:
+Acesse a aplicação através do link:
 [Entrar na Aplicação](http://129.148.62.231/login)
 
 
