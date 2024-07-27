@@ -5,13 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 use App\Http\Middleware\CorsMiddleware;
 
-
-//Adicionando Group para o middleware de CorsMiddleware
 Route::group(['Middleware' => CorsMiddleware::class], function () {
     Route::get('/', function () {
         return redirect()->route('login');
@@ -31,4 +27,3 @@ Route::group(['Middleware' => CorsMiddleware::class], function () {
         Route::put('password', [PasswordController::class, 'update'])->name('password.alterar');
     });
 });
-// ->middleware(CorsMiddleware::class);

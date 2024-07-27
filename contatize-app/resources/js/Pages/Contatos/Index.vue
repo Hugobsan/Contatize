@@ -3,8 +3,6 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
 import ContatosList from "./ContatosList.vue";
 import ContatosCreate from "./ContatosCreate.vue";
-// import HotelsList from '@/Pages/Hotels/HotelsList.vue';
-// import HotelsCreate from '@/Pages/Hotels/HotelsCreate.vue';
 
 import axios from "axios";
 
