@@ -10,7 +10,7 @@ Você pode assistir ao vídeo de apresentação da aplicação clicando no link:
 ## Acesso à Aplicação
 
 Acesse a aplicação através do link:
-[Entrar na Aplicação](http://129.148.62.231/login)
+[Entrar na Aplicação](http://contatize.hugobsan.me)
 
 
 ## Funcionalidades
